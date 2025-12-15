@@ -1,6 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import {filterImageFromURL, deleteLocalFiles} from './util/util.js';
+// import {filterImageFromURL, deleteLocalFiles} from './util/util.js';
+import { router as imageRoutes} from './routes/imageRoute.js'
 
 
 
@@ -8,7 +9,7 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util.js';
   const app = express();
 
   // Set the network port
-  const port = process.env.PORT || 8082;
+  const port = process.env.PORT || 8080;
   
   // Use the body parser middleware for post requests
   app.use(bodyParser.json());
@@ -30,6 +31,7 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util.js';
     /**************************************************************************** */
 
   //! END @TODO1
+  app.use(imageRoutes);
   
   // Root Endpoint
   // Displays a simple message to the user
